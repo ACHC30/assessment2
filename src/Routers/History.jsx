@@ -3,11 +3,12 @@ import Tables from "../Components/Tables";
 import { useState } from "react";
 import Charts from "../Components/Charts";
 import MyDatePicker from "../Components/MyDatePicker";
+import {useNavigate} from "react-router-dom"
 
 function PriceHistory() {
-  const [searchSymbol, setSearchSymbol] = useState("");
   const [searchDate, setSearchDate] = useState("");
-  const { loading, rowData, error } = SearchApiHistory(searchSymbol,searchDate);
+  const { loading, rowData,name, error } = SearchApiHistory(searchDate);
+  const navigate = useNavigate();
   const columns = [
     { headername: "Date", field: "date", resizable: true, flex: 1 },
     { headername: "Open", field: "open", resizable: true, flex: 2 },
@@ -28,8 +29,13 @@ function PriceHistory() {
   }else{
     return (
       <div>
-        <h1>History</h1>
+        <h1>History of {name}</h1>
         <MyDatePicker onSubmit={setSearchDate}/>
+        <button  
+          type="button" 
+          id = "search-button"
+          onClick={() => navigate(`/stocks/${name}/quote`, { state: { name: name } } )}
+        >Get The Quote</button>
         <Tables columns={columns} rows={rowData} />
         <Charts date={dates} data={open} title={"open"} color={"Black"}/>
         <Charts date={dates} data={high} title={"high"} color={"Green"}/>

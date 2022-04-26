@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-const API_KEY = "eb6d9149d9e4183108ab835be6a1bfac";
+const API_KEY = "0dd0c19136f01040874e4d1027257bfd";
 
-function SearchApiHistory(symbol, search) {
+function SearchApiHistory(search) {
   const [loading, setLoading] = useState(true);
   const [rowData, setData] = useState([]);
   const [error, setError] = useState(null);
   const location = useLocation();
+  const name = location.state.name;
 
   useEffect(() => {
     (async () => {
       try {
-        setData(await getDataHistory(location.state.name, search));
+        setData(await getDataHistory(name, search));
         console.log(rowData);
         setLoading(false);
       } catch (err) {
@@ -19,10 +20,11 @@ function SearchApiHistory(symbol, search) {
         setLoading(false);
       }
     })();
-  }, [symbol, search]);
+  }, [search]);
   return {
     loading,
     rowData,
+    name,
     error,
   };
 }
