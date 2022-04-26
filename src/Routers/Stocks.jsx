@@ -1,4 +1,4 @@
-import SearchApiStocks from "../ApiStocks";
+import SearchApiStocks from "../API/ApiStocks";
 import Tables from "../Components/Tables";
 import SearchBar from "../Components/SearchBar";
 import SelectBar from "../Components/SelectBar";
@@ -45,7 +45,7 @@ function Stocks() {
             Industry <SelectBar options={uniqueOptions} onSubmit={setSearchIndustry} />
           </p>
           <div style={{clear: "both"}}>
-           <Tables columns={columns} rows={finalData} />
+           <Tables columns={columns} rows={finalData} height={"300px"} width={"100%"}/>
           </div>
           
         </div>

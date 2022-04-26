@@ -1,31 +1,27 @@
 import { useEffect, useState } from "react";
 const API_KEY = "0dd0c19136f01040874e4d1027257bfd";
-import { useLocation } from "react-router-dom";
 
-function SearchApiQuote() {
-  const [loading, setLoading] = useState(true);
-  const [rowData, setData] = useState([]);
-  const [error, setError] = useState(null);
-  const location = useLocation();
-  const name = location.state.name;
+function SearchApiQuote(symbol) {
+  const [loadingQ, setLoading] = useState(true);
+  const [rowDataQ, setData] = useState([]);
+  const [errorQ, setError] = useState(null);
 
   useEffect(() => {
     (async () => {
       try {
-        setData(await getDataQuote(name));
-        console.log(rowData);
+        setData(await getDataQuote(symbol));
+        console.log(rowDataQ);
         setLoading(false);
       } catch (err) {
         setError(err);
         setLoading(false);
       }
     })();
-  }, []);
+  }, [symbol]);
   return {
-    loading,
-    rowData,
-    name,
-    error,
+    loadingQ,
+    rowDataQ,
+    errorQ,
   };
 }
 
@@ -41,6 +37,7 @@ async function getDataQuote(symbol) {
       dayHigh: quote.dayHigh,
       dayLow: quote.dayLow,
       volume: quote.volume,
+      previousClose: quote.previousClose,
     };
   });
 

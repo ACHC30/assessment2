@@ -6,7 +6,7 @@ import {useNavigate} from "react-router-dom"
 function Tables(props){
     const navigate = useNavigate();
     return(
-        <div className="ag-theme-balham" style={{ height: "300px", width: "100%"}}>
+        <div className="ag-theme-balham" style={{ height: props.height, width: props.width}}>
             <AgGridReact 
             columnDefs={props.columns} 
             rowData={props.rows} 

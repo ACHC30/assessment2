@@ -8,7 +8,6 @@ import {
 import Home from "./Routers/Home";
 import Stocks from "./Routers/Stocks";
 import PriceHistory from "./Routers/History";
-import Quote from "./Routers/Quote";
 
 function App() {
   return (
@@ -28,7 +27,6 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/stocks" element={<Stocks />} />
           <Route path="/stocks/:symbol" element={<PriceHistory />} />
-          <Route path="/stocks/:symbol/quote" element={<Quote />} />
         </Routes>
       </div>
     </Router>
