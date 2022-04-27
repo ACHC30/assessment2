@@ -6,6 +6,7 @@ import Charts from "../Components/Charts";
 import MyDatePicker from "../Components/MyDatePicker";
 import { Table } from "react-bootstrap";
 import { Container, Row, Col } from "react-bootstrap";
+import GetFooter from "../Components/Footer";
 function PriceHistory() {
   const [searchDate, setSearchDate] = useState("");
   const { loading, rowData, name, error } = SearchApiHistory(searchDate);
@@ -101,19 +102,19 @@ function PriceHistory() {
             <Col>
               <Charts date={dates} data={high} title={"high"} color={"Green"} />
             </Col>
-            <Row>
-              <Col>
-                <Charts date={dates} data={low} title={"low"} color={"Red"} />
-              </Col>
-              <Col>
-                <Charts
-                  date={dates}
-                  data={volumes}
-                  title={"volume"}
-                  color={"Black"}
-                />
-              </Col>
-            </Row>
+          </Row>
+          <Row>
+            <Col>
+              <Charts date={dates} data={low} title={"low"} color={"Red"} />
+            </Col>
+            <Col>
+              <Charts
+                date={dates}
+                data={volumes}
+                title={"volume"}
+                color={"Black"}
+              />
+            </Col>
           </Row>
         </Container>
 
@@ -124,6 +125,7 @@ function PriceHistory() {
           height={"100px"}
           width={"100%"}
         /> */}
+        <GetFooter />
       </div>
     );
   }
