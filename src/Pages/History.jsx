@@ -12,11 +12,46 @@ function PriceHistory() {
   const { loading, rowData, name, error } = SearchApiHistory(searchDate);
   const { loadingQ, rowDataQ, errorQ } = SearchApiQuote(name);
   const columns = [
-    { headername: "Date", field: "date", resizable: true, flex: 1 },
-    { headername: "Open", field: "open", resizable: true, flex: 2 },
-    { headername: "High", field: "high", resizable: true, flex: 2 },
-    { headername: "Low", field: "low", resizable: true, flex: 2 },
-    { headername: "Volume", field: "volume", resizable: true, flex: 2 },
+    {
+      headername: "Date",
+      field: "date",
+      resizable: true,
+      flex: 1,
+      sortable: true,
+      filter: true,
+    },
+    {
+      headername: "Open",
+      field: "open",
+      resizable: true,
+      flex: 2,
+      sortable: true,
+      filter: true,
+    },
+    {
+      headername: "High",
+      field: "high",
+      resizable: true,
+      flex: 2,
+      sortable: true,
+      filter: true,
+    },
+    {
+      headername: "Low",
+      field: "low",
+      resizable: true,
+      flex: 2,
+      sortable: true,
+      filter: true,
+    },
+    {
+      headername: "Volume",
+      field: "volume",
+      resizable: true,
+      flex: 2,
+      sortable: true,
+      filter: true,
+    },
   ];
   const columnsQuote = [
     { headername: "Name", field: "name", resizable: true, flex: 1 },
@@ -87,6 +122,7 @@ function PriceHistory() {
               </Row>
             </Col>
             <Col md lg={8}>
+              <Table striped bordered hover></Table>
               <Tables
                 columns={columns}
                 rows={rowData}
@@ -118,7 +154,6 @@ function PriceHistory() {
           </Row>
         </Container>
 
-        <Table striped bordered hover></Table>
         {/* <Tables
           columns={columnsQuote}
           rows={rowDataQ}
