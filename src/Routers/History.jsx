@@ -38,8 +38,8 @@ function PriceHistory() {
   }else{
     return (
       <div>
-        <h1>History of {name}</h1>
-        <h1>Quote of {name}</h1>
+        <h1>This is the History of {name}</h1>
+        <h2>Quote of {name}</h2>
         <Tables columns={columnsQuote} rows={rowDataQ} height={"100px"} width={"100%"}/>
         <MyDatePicker onSubmit={setSearchDate}/>
         <Tables columns={columns} rows={rowData} height={"300px"} width={"100%"}/>

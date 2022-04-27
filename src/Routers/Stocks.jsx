@@ -47,7 +47,6 @@ function Stocks() {
           <div style={{clear: "both"}}>
            <Tables columns={columns} rows={finalData} height={"300px"} width={"100%"}/>
           </div>
-          
         </div>
       );
     }
