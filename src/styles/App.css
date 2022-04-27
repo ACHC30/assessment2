@@ -1,20 +1,25 @@
-.App-logo {
-  height: 10vmin;
-  pointer-events: none;
+.title {
+  text-align: center;
+  color: #343a40;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 75px;
 }
-
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
+.icon {
+  text-align: center;
+  color: rgb(102, 102, 102);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 18px;
 }
-
-li {
-  float: left;
+.footer {
+  background-color: rgb(43, 48, 54);
+  color: aliceblue;
+  text-align: center;
+  font-size: 14px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-
-li a {
-  padding: 8px;
-  border-right: 10px;
+.title-small {
+  text-align: center;
+  color: rgb(165, 175, 175);
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 45px;
 }
