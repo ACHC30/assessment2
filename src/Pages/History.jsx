@@ -90,39 +90,40 @@ function PriceHistory() {
           <Row>
             <Col>
               <Row>
-                <h1>Quote of {name}</h1>
+                <h3>Quote of {name}</h3>
               </Row>
               <Row>
-                <tbody style={{ height: 100 }}>
-                  <tr>
-                    <td>Name</td>
-                    <td>{rowDataQ.name}</td>
-                  </tr>
-                  <tr>
-                    <td>Price</td>
-                    <td>{rowDataQ.price}</td>
-                  </tr>
-                  <tr>
-                    <td>DayHigh</td>
-                    <td>{rowDataQ.dayHigh}</td>
-                  </tr>
-                  <tr>
-                    <td>DayLow</td>
-                    <td>{rowDataQ.dayLow}</td>
-                  </tr>
-                  <tr>
-                    <td>Volume</td>
-                    <td>{rowDataQ.volume}</td>
-                  </tr>
-                  <tr>
-                    <td>PreviousClose</td>
-                    <td>{rowDataQ.previousClose}</td>
-                  </tr>
-                </tbody>
+                <Table striped bordered hover>
+                  <tbody style={{ height: 100 }}>
+                    <tr>
+                      <td>Name</td>
+                      <td>1{rowDataQ.name}</td>
+                    </tr>
+                    <tr>
+                      <td>Price</td>
+                      <td>2{rowDataQ.price}</td>
+                    </tr>
+                    <tr>
+                      <td>DayHigh</td>
+                      <td>3{rowDataQ.dayHigh}</td>
+                    </tr>
+                    <tr>
+                      <td>DayLow</td>
+                      <td>4{rowDataQ.dayLow}</td>
+                    </tr>
+                    <tr>
+                      <td>Volume</td>
+                      <td>5{rowDataQ.volume}</td>
+                    </tr>
+                    <tr>
+                      <td>PreviousClose</td>
+                      <td>6{rowDataQ.previousClose}</td>
+                    </tr>
+                  </tbody>
+                </Table>
               </Row>
             </Col>
             <Col md lg={8}>
-              <Table striped bordered hover></Table>
               <Tables
                 columns={columns}
                 rows={rowData}

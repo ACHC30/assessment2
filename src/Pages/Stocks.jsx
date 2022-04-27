@@ -43,7 +43,7 @@ function Stocks() {
 
   let options = [];
   rowData.map((stock) => options.push(stock.industry));
-  let uniqueOptions = [...new Set(options)];
+  let uniqueOptions = [...new Set(options)].sort();
   const finalData = rowData.filter((profile) => {
     if (searchSymbol === "" && searchIndustry === "") {
       return profile;
