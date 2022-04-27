@@ -1,8 +1,9 @@
 .title {
   text-align: center;
-  color: #343a40;
-  font-family: Georgia, "Times New Roman", Times, serif;
+  color: rgb(43, 48, 54);
+  font-family: "Times New Roman", Times, serif;
   font-size: 75px;
+  text-shadow: #343a40 --2px;
 }
 .icon {
   text-align: center;

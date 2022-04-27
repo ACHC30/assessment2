@@ -1,10 +1,11 @@
-import SearchApiHistory from "../API/ApiHistory"
+import SearchApiHistory from "../API/ApiHistory";
 import SearchApiQuote from "../API/ApiQuote";
 import Tables from "../Components/Tables";
 import { useState } from "react";
 import Charts from "../Components/Charts";
 import MyDatePicker from "../Components/MyDatePicker";
-
+import { Table } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 function PriceHistory() {
   const [searchDate, setSearchDate] = useState("");
   const { loading, rowData, name, error } = SearchApiHistory(searchDate);
@@ -17,12 +18,17 @@ function PriceHistory() {
     { headername: "Volume", field: "volume", resizable: true, flex: 2 },
   ];
   const columnsQuote = [
-      { headername: "Name", field: "name", resizable: true, flex: 1 },
-      { headername: "Price", field: "price", resizable: true, flex: 2 },
-      { headername: "DayHigh", field: "dayHigh", resizable: true, flex: 2 },
-      { headername: "DayLow", field: "dayLow", resizable: true, flex: 2 },
-      { headername: "volume", field: "volume", resizable: true, flex: 2 },
-      { headername: "PreviousClose", field: "previousClose", resizable: true, flex: 2 },
+    { headername: "Name", field: "name", resizable: true, flex: 1 },
+    { headername: "Price", field: "price", resizable: true, flex: 2 },
+    { headername: "DayHigh", field: "dayHigh", resizable: true, flex: 2 },
+    { headername: "DayLow", field: "dayLow", resizable: true, flex: 2 },
+    { headername: "volume", field: "volume", resizable: true, flex: 2 },
+    {
+      headername: "PreviousClose",
+      field: "previousClose",
+      resizable: true,
+      flex: 2,
+    },
   ];
   const dates = rowData.map((history) => history.date);
   const open = rowData.map((history) => history.open);
@@ -35,18 +41,89 @@ function PriceHistory() {
   }
   if (error != null || errorQ) {
     return <h1>error...</h1>;
-  }else{
+  } else {
     return (
       <div>
-        <h1>History of {name}</h1>
-        <h1>Quote of {name}</h1>
-        <Tables columns={columnsQuote} rows={rowDataQ} height={"100px"} width={"100%"}/>
-        <MyDatePicker onSubmit={setSearchDate}/>
-        <Tables columns={columns} rows={rowData} height={"300px"} width={"100%"}/>
-        <Charts date={dates} data={open} title={"open"} color={"Black"}/>
-        <Charts date={dates} data={high} title={"high"} color={"Green"}/>
-        <Charts date={dates} data={low} title={"low"} color={"Red"}/>
-        <Charts date={dates} data={volumes} title={"volume"} color={"Yellow"}/>
+        <Container>
+          <Row>
+            <p className="title">History of {name}</p>
+          </Row>
+          <Row>
+            <MyDatePicker onSubmit={setSearchDate} />
+          </Row>
+          <Row>
+            <Col>
+              <Row>
+                <h1>Quote of {name}</h1>
+              </Row>
+              <Row>
+                <tbody style={{ height: 100 }}>
+                  <tr>
+                    <td>Name</td>
+                    <td>{rowDataQ.name}</td>
+                  </tr>
+                  <tr>
+                    <td>Price</td>
+                    <td>{rowDataQ.price}</td>
+                  </tr>
+                  <tr>
+                    <td>DayHigh</td>
+                    <td>{rowDataQ.dayHigh}</td>
+                  </tr>
+                  <tr>
+                    <td>DayLow</td>
+                    <td>{rowDataQ.dayLow}</td>
+                  </tr>
+                  <tr>
+                    <td>Volume</td>
+                    <td>{rowDataQ.volume}</td>
+                  </tr>
+                  <tr>
+                    <td>PreviousClose</td>
+                    <td>{rowDataQ.previousClose}</td>
+                  </tr>
+                </tbody>
+              </Row>
+            </Col>
+            <Col md lg={8}>
+              <Tables
+                columns={columns}
+                rows={rowData}
+                height={"300px"}
+                width={"100%"}
+              />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Charts date={dates} data={open} title={"open"} color={"Blue"} />
+            </Col>
+            <Col>
+              <Charts date={dates} data={high} title={"high"} color={"Green"} />
+            </Col>
+            <Row>
+              <Col>
+                <Charts date={dates} data={low} title={"low"} color={"Red"} />
+              </Col>
+              <Col>
+                <Charts
+                  date={dates}
+                  data={volumes}
+                  title={"volume"}
+                  color={"Black"}
+                />
+              </Col>
+            </Row>
+          </Row>
+        </Container>
+
+        <Table striped bordered hover></Table>
+        {/* <Tables
+          columns={columnsQuote}
+          rows={rowDataQ}
+          height={"100px"}
+          width={"100%"}
+        /> */}
       </div>
     );
   }

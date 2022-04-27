@@ -1,17 +1,18 @@
 import "../styles/App.css";
 import { Carousel, Container, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Banner from "../img/Banner.png";
-import icon from "../img/icon.png";
-import icon2 from "../img/icon2.png";
-import icon3 from "../img/icon3.png";
+import Banner from "../Images/Banner.png";
+import icon from "../Images/icon.png";
+import icon2 from "../Images/icon2.png";
+import icon3 from "../Images/icon3.png";
+import GetFooter from "../Components/Footer";
 function Home() {
   return (
     <div>
       <div>
         <Container>
           <Row>
-            <Col xs={12}>
+            <Col>
               <Carousel>
                 <Carousel.Item>
                   <img className="d-block w-100" src={Banner} alt="Stocks" />
@@ -55,10 +56,7 @@ function Home() {
           </Row>
         </Container>
       </div>
-      <footer className="footer">
-        <p>Stock Market Potal</p>
-        <p>Copyright © 2022 by Chris&Michael</p>
-      </footer>
+      <GetFooter />
     </div>
   );
 }
