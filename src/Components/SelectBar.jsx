@@ -11,6 +11,15 @@ function SelectBar(props) {
       menuVariant="dark"
       title={innerSearch === "" ? "Industy Search" : innerSearch}
     >
+      <Dropdown.Item
+        eventKey="All Industries"
+        onClick={(event) => {
+          setInnerSearch(event.target.textContent);
+          props.onSubmit("");
+        }}
+      >
+        All Industries
+      </Dropdown.Item>
       {props.options.map((title) => (
         <Dropdown.Item
           eventKey={title}
