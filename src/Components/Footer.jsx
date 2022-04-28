@@ -1,4 +1,4 @@
-import "../styles/App.css";
+import "../Styles/App.css";
 function GetFooter() {
   return (
     <footer className="footer">

@@ -1,4 +1,4 @@
-import "../styles/App.css";
+import "../Styles/App.css";
 import { Carousel, Container, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Banner from "../Images/Banner.png";
@@ -30,7 +30,7 @@ function Home() {
               <div className="icon">
                 <img src={icon} alt="Stocks" />
                 <p style={{ height: 30 }}></p>
-                <p classname="context">
+                <p className="context">
                   Click on stocks to see the available companies.
                 </p>
               </div>
@@ -39,7 +39,7 @@ function Home() {
               <div className="icon">
                 <img src={icon2} alt="Stocks" />
                 <p style={{ height: 30 }}></p>
-                <p classname="context">
+                <p className="context">
                   We also provide the quote for each stocks.
                 </p>
               </div>
@@ -48,7 +48,7 @@ function Home() {
               <div className="icon">
                 <img src={icon3} alt="Stocks" />
                 <p style={{ height: 30 }}></p>
-                <p classname="context">
+                <p className="context">
                   History might help you to see the 100 days log of each stocks.
                 </p>
               </div>

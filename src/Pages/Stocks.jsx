@@ -3,7 +3,7 @@ import Tables from "../Components/Tables";
 import SearchBar from "../Components/SearchBar";
 import SelectBar from "../Components/SelectBar";
 import { useState } from "react";
-import "../styles/App.css";
+import "../Styles/App.css";
 import { Container, Row, Col } from "react-bootstrap";
 import GetFooter from "../Components/Footer";
 

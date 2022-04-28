@@ -4,9 +4,9 @@ import Tables from "../Components/Tables";
 import { useState } from "react";
 import Charts from "../Components/Charts";
 import MyDatePicker from "../Components/MyDatePicker";
-import { Table } from "react-bootstrap";
 import { Container, Row, Col } from "react-bootstrap";
 import GetFooter from "../Components/Footer";
+import QuoteDisplay from "../Components/QuoteDisplay";
 function PriceHistory() {
   const [searchDate, setSearchDate] = useState("");
   const { loading, rowData, name, error } = SearchApiHistory(searchDate);
@@ -53,19 +53,6 @@ function PriceHistory() {
       filter: true,
     },
   ];
-  const columnsQuote = [
-    { headername: "Name", field: "name", resizable: true, flex: 1 },
-    { headername: "Price", field: "price", resizable: true, flex: 2 },
-    { headername: "DayHigh", field: "dayHigh", resizable: true, flex: 2 },
-    { headername: "DayLow", field: "dayLow", resizable: true, flex: 2 },
-    { headername: "volume", field: "volume", resizable: true, flex: 2 },
-    {
-      headername: "PreviousClose",
-      field: "previousClose",
-      resizable: true,
-      flex: 2,
-    },
-  ];
   const dates = rowData.map((history) => history.date);
   const open = rowData.map((history) => history.open);
   const high = rowData.map((history) => history.high);
@@ -93,34 +80,7 @@ function PriceHistory() {
                 <h3>Quote of {name}</h3>
               </Row>
               <Row>
-                <Table striped bordered hover>
-                  <tbody style={{ height: 100 }}>
-                    <tr>
-                      <td>Name</td>
-                      <td>1{rowDataQ.name}</td>
-                    </tr>
-                    <tr>
-                      <td>Price</td>
-                      <td>2{rowDataQ.price}</td>
-                    </tr>
-                    <tr>
-                      <td>DayHigh</td>
-                      <td>3{rowDataQ.dayHigh}</td>
-                    </tr>
-                    <tr>
-                      <td>DayLow</td>
-                      <td>4{rowDataQ.dayLow}</td>
-                    </tr>
-                    <tr>
-                      <td>Volume</td>
-                      <td>5{rowDataQ.volume}</td>
-                    </tr>
-                    <tr>
-                      <td>PreviousClose</td>
-                      <td>6{rowDataQ.previousClose}</td>
-                    </tr>
-                  </tbody>
-                </Table>
+                <QuoteDisplay data={rowDataQ}/>
               </Row>
             </Col>
             <Col md lg={8}>
