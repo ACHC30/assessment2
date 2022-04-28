@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-const API_KEY = "1031bcaf47ced35f5adf93ebd56dee09";
+const API_KEY = "eb6d9149d9e4183108ab835be6a1bfac";
 
 function SearchApiHistory(search) {
   const [loading, setLoading] = useState(true);
