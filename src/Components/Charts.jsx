@@ -1,23 +1,23 @@
 import {
   Chart as ChartJS,
-  CategoryScale,
   LinearScale,
+  CategoryScale,
+  BarElement,
   PointElement,
   LineElement,
-  Title,
-  Tooltip,
   Legend,
+  Tooltip,
 } from "chart.js";
-import { Line, Bar } from "react-chartjs-2";
+import { Chart } from "react-chartjs-2";
 
 ChartJS.register(
-  CategoryScale,
   LinearScale,
+  CategoryScale,
+  BarElement,
   PointElement,
   LineElement,
-  Title,
-  Tooltip,
-  Legend
+  Legend,
+  Tooltip
 );
 
 function Charts(props) {
@@ -26,33 +26,32 @@ function Charts(props) {
     labels: labels,
     datasets: [
       {
-        label: props.title,
+        type: 'line',
+        label: props.title + "(Line)",
         data: props.data,
-        fill: true,
+        fill: false,
         borderColor: props.color,
         backgroundColor: props.color,
       },
+      {
+        type: 'bar',
+        label: props.title + "(Bar)",
+        data: props.data,
+        fill: false,
+        borderColor: "grey",
+        backgroundColor: "grey",
+      },
     ],
   };
-  const options = {
-    responsive: true,
-    plugins: {
-      title: {
-        display: true,
-        text: `History (${props.title})`,
-      },
-    },
-  };
-  if (options === undefined) {
-    return <p>Error in options</p>;
-  } else if (data === undefined) {
+
+  if (data === undefined) {
     return <p>Error in data</p>;
   } else if (labels === undefined) {
     return <p>Error in labels</p>;
   } else {
     return (
       <div>
-        <Line options={options} data={data} />;
+        <Chart type='bar' data={data} />
       </div>
     );
   }
