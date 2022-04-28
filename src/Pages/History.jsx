@@ -5,7 +5,6 @@ import { useState } from "react";
 import Charts from "../Components/Charts";
 import MyDatePicker from "../Components/MyDatePicker";
 import { Container, Row, Col } from "react-bootstrap";
-import GetFooter from "../Components/Footer";
 import QuoteDisplay from "../Components/QuoteDisplay";
 function PriceHistory() {
   const [searchDate, setSearchDate] = useState("");
@@ -85,6 +84,7 @@ function PriceHistory() {
             </Col>
             <Col md lg={8}>
               <Tables
+                clickable = {false}
                 columns={columns}
                 rows={rowData}
                 height={"300px"}
@@ -114,14 +114,6 @@ function PriceHistory() {
             </Col>
           </Row>
         </Container>
-
-        {/* <Tables
-          columns={columnsQuote}
-          rows={rowDataQ}
-          height={"100px"}
-          width={"100%"}
-        /> */}
-        <GetFooter />
       </div>
     );
   }

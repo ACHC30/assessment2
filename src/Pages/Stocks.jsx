@@ -5,15 +5,12 @@ import SelectBar from "../Components/SelectBar";
 import { useState } from "react";
 import "../Styles/App.css";
 import { Container, Row, Col } from "react-bootstrap";
-import GetFooter from "../Components/Footer";
+
 
 function Stocks() {
   const [searchSymbol, setSearchSymbol] = useState("");
   const [searchIndustry, setSearchIndustry] = useState("");
-  const { loading, rowData, error } = SearchApiStocks(
-    searchSymbol,
-    searchIndustry
-  );
+  const { loading, rowData, error } = SearchApiStocks();
   const columns = [
     {
       headername: "Symbol",
@@ -78,6 +75,7 @@ function Stocks() {
           </Row>
           <Row>
             <Tables
+              clickable = {true}
               columns={columns}
               rows={finalData}
               height={"600px"}
@@ -85,9 +83,6 @@ function Stocks() {
             />
           </Row>
         </Container>
-
-        <div style={{ clear: "both" }}></div>
-        <GetFooter />
       </div>
     );
   }

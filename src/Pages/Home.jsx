@@ -5,7 +5,6 @@ import Banner from "../Images/Banner.png";
 import icon from "../Images/icon.png";
 import icon2 from "../Images/icon2.png";
 import icon3 from "../Images/icon3.png";
-import GetFooter from "../Components/Footer";
 function Home() {
   return (
     <div>
@@ -56,7 +55,6 @@ function Home() {
           </Row>
         </Container>
       </div>
-      <GetFooter />
     </div>
   );
 }

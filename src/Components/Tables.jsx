@@ -13,7 +13,8 @@ function Tables(props){
             pagination={true}
             paginationPageSize={25}
             rowSelection="Single"
-            onRowClicked={(e) => navigate(`/stocks/${props.rows[e.rowIndex].symbol}`, { state: { name: props.rows[e.rowIndex].symbol } } )}
+            onRowClicked={(e) => props.clickable ? 
+                navigate(`/stocks/${props.rows[e.rowIndex].symbol}`, { state: { name: props.rows[e.rowIndex].symbol } } ) : ""}
             />
         </div>
     );
