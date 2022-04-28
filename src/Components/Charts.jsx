@@ -1,62 +1,60 @@
 import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    Title,
-    Tooltip,
-    Legend,
-  } from 'chart.js';
-import { Line } from 'react-chartjs-2';
+  Chart as ChartJS,
+  LinearScale,
+  CategoryScale,
+  BarElement,
+  PointElement,
+  LineElement,
+  Legend,
+  Tooltip,
+} from "chart.js";
+import { Chart } from "react-chartjs-2";
 
 ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    PointElement,
-    LineElement,
-    Title,
-    Tooltip,
-    Legend
-  );
+  LinearScale,
+  CategoryScale,
+  BarElement,
+  PointElement,
+  LineElement,
+  Legend,
+  Tooltip
+);
 
-function Charts(props){
-    const labels = props.date;
-    const data = {
-        labels,
-        datasets: [
-          {
-            label: props.title,
-            data: props.data,
-            borderColor: props.color,
-            backgroundColor: props.color,
-          }
-        ],
-    };
-    const options = {
-        responsive: true,
-        plugins: {
-          title: {
-            display: true,
-            text: `History (${props.title})`,
-          },
-        },
-    };
-    if(options === undefined){
-        return <p>Error in options</p>
-    }
-    else if(data === undefined){
-        return <p>Error in data</p>
-    }
-    else if(labels === undefined){
-        return <p>Error in labels</p>
-    }
-    else{
-        return <div>
-        <Line options={options} data={data} />;
-     </div>
-    }
-    
+function Charts(props) {
+  const labels = props.date;
+  const data = {
+    labels: labels,
+    datasets: [
+      {
+        type: 'line',
+        label: props.title + "(Line)",
+        data: props.data,
+        fill: false,
+        borderColor: props.color,
+        backgroundColor: props.color,
+      },
+      {
+        type: 'bar',
+        label: props.title + "(Bar)",
+        data: props.data,
+        fill: false,
+        borderColor: "grey",
+        backgroundColor: "grey",
+      },
+    ],
+  };
+
+  if (data === undefined) {
+    return <p>Error in data</p>;
+  } else if (labels === undefined) {
+    return <p>Error in labels</p>;
+  } else {
+    return (
+      <div>
+        <Chart type='bar' data={data} />
+      </div>
+    );
+  }
 }
 
 export default Charts;

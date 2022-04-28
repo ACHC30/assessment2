@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-const API_KEY = "0dd0c19136f01040874e4d1027257bfd";
+const API_KEY = "eb6d9149d9e4183108ab835be6a1bfac";
 
 function SearchApiQuote(symbol) {
   const [loadingQ, setLoading] = useState(true);
@@ -10,7 +10,6 @@ function SearchApiQuote(symbol) {
     (async () => {
       try {
         setData(await getDataQuote(symbol));
-        console.log(rowDataQ);
         setLoading(false);
       } catch (err) {
         setError(err);
@@ -29,7 +28,6 @@ async function getDataQuote(symbol) {
   const url = `https://financialmodelingprep.com/api/v3/quote/${symbol}?apikey=${API_KEY}`;
   let res = await fetch(url);
   let data = await res.json();
-  console.log(data);
   let quote = data.map((quote) => {
     return {
       name: quote.name,

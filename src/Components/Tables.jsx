@@ -1,7 +1,7 @@
 import { AgGridReact } from "ag-grid-react";
+import {useNavigate} from "react-router-dom"
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";
-import {useNavigate} from "react-router-dom"
 
 function Tables(props){
     const navigate = useNavigate();
@@ -11,8 +11,10 @@ function Tables(props){
             columnDefs={props.columns} 
             rowData={props.rows} 
             pagination={true}
+            paginationPageSize={25}
             rowSelection="Single"
-            onRowClicked={(e) => navigate(`/stocks/${props.rows[e.rowIndex].symbol}`, { state: { name: props.rows[e.rowIndex].symbol } } )}
+            onRowClicked={(e) => props.clickable ? 
+                navigate(`/stocks/${props.rows[e.rowIndex].symbol}`, { state: { name: props.rows[e.rowIndex].symbol } } ) : ""}
             />
         </div>
     );
