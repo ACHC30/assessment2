@@ -5,9 +5,9 @@ import Banner from "../Images/Banner.png";
 import icon from "../Images/icon.png";
 import icon2 from "../Images/icon2.png";
 import icon3 from "../Images/icon3.png";
+
 function Home() {
   return (
-    <div>
       <div>
         <Container>
           <Row>
@@ -55,7 +55,6 @@ function Home() {
           </Row>
         </Container>
       </div>
-    </div>
   );
 }
 

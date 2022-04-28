@@ -13,7 +13,6 @@ function SearchApiHistory(search) {
     (async () => {
       try {
         setData(await getDataHistory(name, search));
-        console.log(rowData);
         setLoading(false);
       } catch (err) {
         setError(err);
@@ -31,17 +30,21 @@ function SearchApiHistory(search) {
 
 async function getDataHistory(symbol, dateSearch) {
   let url = "";
-  let now = new Date().toISOString().slice(0, 10);
-  if (dateSearch === "" || dateSearch.toISOString().slice(0, 10) === now) {
+  if (
+    dateSearch === "" ||
+    dateSearch.toISOString().slice(0, 10) ===
+      new Date().toISOString().slice(0, 10)
+  ) {
     url = `https://financialmodelingprep.com/api/v3/historical-price-full/${symbol}?timeseries=100&apikey=${API_KEY}`;
   } else {
     url = `https://financialmodelingprep.com/api/v3/historical-price-full/${symbol}?from=${dateSearch
       .toISOString()
-      .slice(0, 10)}&to=${now}&apikey=${API_KEY}`;
+      .slice(0, 10)}&to=${new Date()
+      .toISOString()
+      .slice(0, 10)}&apikey=${API_KEY}`;
   }
   let res = await fetch(url);
   let data = await res.json();
-
   let history = data.historical.map((history) => {
     return {
       date: history.date,

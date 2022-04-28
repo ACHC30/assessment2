@@ -15,8 +15,8 @@ import PriceHistory from "../Pages/History";
 import GetFooter from "../Components/Footer";
 
 function NavigationBar(){
-    return (<Router>
-    <div>
+    return (
+    <Router>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
           <Navbar.Brand href="#">Show Image Here</Navbar.Brand>
@@ -35,8 +35,8 @@ function NavigationBar(){
         <Route path="/stocks/:symbol" element={<PriceHistory />} />
       </Routes>
       <GetFooter />
-    </div>
-  </Router>);
+  </Router>
+  );
 }
 
 export default NavigationBar;

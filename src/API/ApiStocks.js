@@ -10,7 +10,6 @@ function SearchApiStocks() {
     (async () => {
       try {
         setData(await getDataStocks());
-        console.log(rowData);
         setLoading(false);
       } catch (err) {
         setError(err);
@@ -29,7 +28,6 @@ async function getDataStocks() {
   const url = `https://financialmodelingprep.com/api/v3/nasdaq_constituent?apikey=${API_KEY}`;
   let res = await fetch(url);
   let data = await res.json();
-  console.log(data);
   let profile = data.map((profile) => {
     return {
       symbol: profile.symbol,

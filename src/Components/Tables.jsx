@@ -1,7 +1,7 @@
 import { AgGridReact } from "ag-grid-react";
+import {useNavigate} from "react-router-dom"
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";
-import {useNavigate} from "react-router-dom"
 
 function Tables(props){
     const navigate = useNavigate();

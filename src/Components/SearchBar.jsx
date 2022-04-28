@@ -29,13 +29,6 @@ function SearchBar(props) {
           </Button>
         </Col>
       </Row>
-
-      {/* <input
-        type="search"
-        id="search"
-        name="search"
-        aria-labelledby="search-button"
-      /> */}
     </div>
   );
 }

@@ -1,15 +1,21 @@
 import SearchApiHistory from "../API/ApiHistory";
 import SearchApiQuote from "../API/ApiQuote";
 import Tables from "../Components/Tables";
-import { useState } from "react";
 import Charts from "../Components/Charts";
 import MyDatePicker from "../Components/MyDatePicker";
-import { Container, Row, Col } from "react-bootstrap";
 import QuoteDisplay from "../Components/QuoteDisplay";
+import { useState } from "react";
+import { Container, Row, Col } from "react-bootstrap";
+
 function PriceHistory() {
   const [searchDate, setSearchDate] = useState("");
   const { loading, rowData, name, error } = SearchApiHistory(searchDate);
   const { loadingQ, rowDataQ, errorQ } = SearchApiQuote(name);
+  const dates = rowData.map((history) => history.date);
+  const open = rowData.map((history) => history.open);
+  const high = rowData.map((history) => history.high);
+  const low = rowData.map((history) => history.low);
+  const volumes = rowData.map((history) => history.volume);
   const columns = [
     {
       headername: "Date",
@@ -52,11 +58,6 @@ function PriceHistory() {
       filter: true,
     },
   ];
-  const dates = rowData.map((history) => history.date);
-  const open = rowData.map((history) => history.open);
-  const high = rowData.map((history) => history.high);
-  const low = rowData.map((history) => history.low);
-  const volumes = rowData.map((history) => history.volume);
 
   if (loading || loadingQ || rowData === undefined) {
     return <h1>Loading...</h1>;
@@ -74,15 +75,7 @@ function PriceHistory() {
             <MyDatePicker onSubmit={setSearchDate} />
           </Row>
           <Row>
-            <Col>
-              <Row>
-                <h3>Quote of {name}</h3>
-              </Row>
-              <Row>
-                <QuoteDisplay data={rowDataQ}/>
-              </Row>
-            </Col>
-            <Col md lg={8}>
+          <Col md lg={8}>
               <Tables
                 clickable = {false}
                 columns={columns}
@@ -90,6 +83,14 @@ function PriceHistory() {
                 height={"300px"}
                 width={"100%"}
               />
+            </Col>
+            <Col>
+              <Row>
+                <h3>Quote of {name}</h3>
+              </Row>
+              <Row>
+                <QuoteDisplay data={rowDataQ}/>
+              </Row>
             </Col>
           </Row>
           <Row>

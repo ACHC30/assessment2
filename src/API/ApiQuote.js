@@ -10,7 +10,6 @@ function SearchApiQuote(symbol) {
     (async () => {
       try {
         setData(await getDataQuote(symbol));
-        console.log(rowDataQ);
         setLoading(false);
       } catch (err) {
         setError(err);
@@ -29,7 +28,6 @@ async function getDataQuote(symbol) {
   const url = `https://financialmodelingprep.com/api/v3/quote/${symbol}?apikey=${API_KEY}`;
   let res = await fetch(url);
   let data = await res.json();
-  console.log(data);
   let quote = data.map((quote) => {
     return {
       name: quote.name,
