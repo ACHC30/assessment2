@@ -26,7 +26,7 @@ function getStocksIndustry(data) {
   return [...new Set(options)].sort();
 }
 
-function getStocksSymbol(data){
+function getStocksSymbol(data) {
   let options = [{ value: "", label: "All Symbol" }];
   data.map((stocks) => {
     options.push({ value: stocks.symbol, label: stocks.symbol });
@@ -94,6 +94,7 @@ function Stocks() {
               clickable={true}
               columns={columns}
               rows={stocksList}
+              style={"ag-theme-balham table_stock"}
             />
           </Row>
         </Container>
