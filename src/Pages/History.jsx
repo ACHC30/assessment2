@@ -93,8 +93,6 @@ function PriceHistory() {
                 clickable = {false}
                 columns={columns}
                 rows={rowData}
-                height={"300px"}
-                width={"100%"}
               />
             </Col>
             <Col>

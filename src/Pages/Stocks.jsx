@@ -94,8 +94,6 @@ function Stocks() {
               clickable={true}
               columns={columns}
               rows={stocksList}
-              height={"600px"}
-              width={"100%"}
             />
           </Row>
         </Container>
