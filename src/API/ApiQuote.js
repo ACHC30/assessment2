@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-const API_KEY = "1031bcaf47ced35f5adf93ebd56dee09";
+const API_KEY = "eb6d9149d9e4183108ab835be6a1bfac";
 
 function SearchApiQuote(symbol) {
   const [loadingQ, setLoading] = useState(true);
