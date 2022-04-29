@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-const API_KEY = "eb6d9149d9e4183108ab835be6a1bfac";
+const API_KEY = "0dd0c19136f01040874e4d1027257bfd";
 
 function SearchApiStocks() {
   const [loading, setLoading] = useState(true);

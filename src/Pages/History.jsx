@@ -7,15 +7,27 @@ import QuoteDisplay from "../Components/QuoteDisplay";
 import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
+function getQuoteInfo(data){
+  const dates = data.map((history) => history.date);
+  const open = data.map((history) => history.open);
+  const high = data.map((history) => history.high);
+  const low = data.map((history) => history.low);
+  const volumes = data.map((history) => history.volume);
+
+  return {
+    dates,
+    open,
+    high,
+    low,
+    volumes,
+  }
+}
+
 function PriceHistory() {
   const [searchDate, setSearchDate] = useState("");
   const { loading, rowData, name, error } = SearchApiHistory(searchDate);
+  const { dates, open, high, low, volumes} = getQuoteInfo(rowData);
   const { loadingQ, rowDataQ, errorQ } = SearchApiQuote(name);
-  const dates = rowData.map((history) => history.date);
-  const open = rowData.map((history) => history.open);
-  const high = rowData.map((history) => history.high);
-  const low = rowData.map((history) => history.low);
-  const volumes = rowData.map((history) => history.volume);
   const columns = [
     {
       headername: "Date",
@@ -58,6 +70,7 @@ function PriceHistory() {
       filter: true,
     },
   ];
+  
 
   if (loading || loadingQ || rowData === undefined) {
     return <h1>Loading...</h1>;
@@ -80,8 +93,6 @@ function PriceHistory() {
                 clickable = {false}
                 columns={columns}
                 rows={rowData}
-                height={"300px"}
-                width={"100%"}
               />
             </Col>
             <Col>

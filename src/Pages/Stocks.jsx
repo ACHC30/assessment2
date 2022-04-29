@@ -26,12 +26,21 @@ function getStocksIndustry(data) {
   return [...new Set(options)].sort();
 }
 
+function getStocksSymbol(data){
+  let options = [{ value: "", label: "All Symbol" }];
+  data.map((stocks) => {
+    options.push({ value: stocks.symbol, label: stocks.symbol });
+  });
+  return options;
+}
+
 function Stocks() {
   const [searchSymbol, setSearchSymbol] = useState("");
   const [searchIndustry, setSearchIndustry] = useState("");
   const { loading, rowData, error } = SearchApiStocks();
   let uniqueOptions = getStocksIndustry(rowData);
   let stocksList = filterStocks(rowData, searchSymbol, searchIndustry);
+  let symbolList = getStocksSymbol(rowData);
   const columns = [
     {
       headername: "Symbol",
@@ -59,11 +68,6 @@ function Stocks() {
     },
   ];
 
-  let symbolList = [{ value: "", label: "All Symbol" }];
-  rowData.map((stocks) => {
-    symbolList.push({ value: stocks.symbol, label: stocks.symbol });
-  });
-
   if (loading || rowData === undefined) {
     return <h1>Loading...</h1>;
   }
@@ -90,8 +94,6 @@ function Stocks() {
               clickable={true}
               columns={columns}
               rows={stocksList}
-              height={"600px"}
-              width={"100%"}
             />
           </Row>
         </Container>
