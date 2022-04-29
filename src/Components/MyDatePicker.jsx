@@ -6,13 +6,13 @@ import "react-datepicker/dist/react-datepicker.css";
 function MyDatePicker(props) {
   const [to, setTo] = useState(new Date());
   return (
-    <div style={{padding: "10px"}}>
+    <div className="date">
       <Row>
         <Col md="auto">
           <DatePicker selected={to} onChange={(date) => setTo(date)} />
         </Col>
         <Col>
-        <Button
+          <Button
             variant="dark"
             type="submit"
             id="search-button"
