@@ -1,23 +1,28 @@
 import { AgGridReact } from "ag-grid-react";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";
 
-function Tables(props){
-    const navigate = useNavigate();
-    return(
-        <div className="ag-theme-balham" style={{ height: props.height, width: props.width}}>
-            <AgGridReact 
-            columnDefs={props.columns} 
-            rowData={props.rows} 
-            pagination={true}
-            paginationPageSize={25}
-            rowSelection="Single"
-            onRowClicked={(e) => props.clickable ? 
-                navigate(`/stocks/${props.rows[e.rowIndex].symbol}`, { state: { name: props.rows[e.rowIndex].symbol } } ) : ""}
-            />
-        </div>
-    );
+function Tables(props) {
+  const navigate = useNavigate();
+  return (
+    <div className="ag-theme-balham table">
+      <AgGridReact
+        columnDefs={props.columns}
+        rowData={props.rows}
+        pagination={true}
+        paginationPageSize={25}
+        rowSelection="Single"
+        onRowClicked={(e) =>
+          props.clickable
+            ? navigate(`/stocks/${props.rows[e.rowIndex].symbol}`, {
+                state: { name: props.rows[e.rowIndex].symbol },
+              })
+            : ""
+        }
+      />
+    </div>
+  );
 }
 
 export default Tables;

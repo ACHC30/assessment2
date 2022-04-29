@@ -12,15 +12,9 @@ function NavigationBar() {
     <Router>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand>
-            <div className="logo">
-              <img
-                classname="logo"
-                src={logo}
-                height="36px"
-                width="36px"
-                alt="logo"
-              />
+          <Navbar.Brand className="logo">
+            <div>
+              <img src={logo} alt="logo" width="32px" height="32px" />
             </div>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
