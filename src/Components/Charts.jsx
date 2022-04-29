@@ -26,7 +26,7 @@ function Charts(props) {
     labels: labels,
     datasets: [
       {
-        type: 'line',
+        type: "line",
         label: props.title + "(Line)",
         data: props.data,
         fill: false,
@@ -34,12 +34,12 @@ function Charts(props) {
         backgroundColor: props.color,
       },
       {
-        type: 'bar',
+        type: "bar",
         label: props.title + "(Bar)",
         data: props.data,
         fill: false,
-        borderColor: "grey",
-        backgroundColor: "grey",
+        borderColor: "#d1d1d1fa",
+        backgroundColor: "#d1d1d1fa",
       },
     ],
   };
@@ -51,7 +51,7 @@ function Charts(props) {
   } else {
     return (
       <div>
-        <Chart type='bar' data={data} />
+        <Chart type="bar" data={data} />
       </div>
     );
   }

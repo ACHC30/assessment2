@@ -16,6 +16,8 @@
   color: aliceblue;
   text-align: center;
   font-size: 14px;
+  margin: 5px;
+  padding: 5px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .title-small {
@@ -55,10 +57,24 @@ h3 {
   padding: "10px";
 }
 .table_history {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   height: 300px;
   width: 100%;
 }
 .table_stock {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   height: 600px;
   width: 100%;
+  color: #000000e0;
+}
+.context {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 16px;
+  text-align: center;
+  padding: 1em;
+}
+#btnGroupAddon {
+  background-color: #000000e0;
+  color: aliceblue;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }

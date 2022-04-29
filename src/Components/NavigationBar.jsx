@@ -21,6 +21,9 @@ function NavigationBar() {
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/stocks">Stocks</Nav.Link>
             </Nav>
+            <Nav>
+              <Nav.Link>Have a nice day!</Nav.Link>
+            </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>

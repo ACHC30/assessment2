@@ -105,23 +105,38 @@ function PriceHistory() {
             </Col>
           </Row>
           <Row>
-            <Col>
-              <Charts date={dates} data={open} title={"open"} color={"Blue"} />
+            <Col xs={12} md ld={6}>
+              <Charts
+                date={dates}
+                data={open}
+                title={"open"}
+                color={"#227ab4fa"}
+              />
             </Col>
-            <Col>
-              <Charts date={dates} data={high} title={"high"} color={"Green"} />
+            <Col xs={12} md ld={6}>
+              <Charts
+                date={dates}
+                data={high}
+                title={"high"}
+                color={"#3db870fa"}
+              />
             </Col>
           </Row>
           <Row>
-            <Col>
-              <Charts date={dates} data={low} title={"low"} color={"Red"} />
+            <Col xs={12} md ld={6}>
+              <Charts
+                date={dates}
+                data={low}
+                title={"low"}
+                color={"#bd3b3bfa"}
+              />
             </Col>
-            <Col>
+            <Col xs={12} md ld={6}>
               <Charts
                 date={dates}
                 data={volumes}
                 title={"volume"}
-                color={"Black"}
+                color={"#000000e0"}
               />
             </Col>
           </Row>

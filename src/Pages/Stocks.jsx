@@ -3,7 +3,15 @@ import Tables from "../Components/Tables";
 import SearchBar from "../Components/SearchBar";
 import SelectBar from "../Components/SelectBar";
 import { useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Badge,
+  ButtonToolbar,
+  InputGroup,
+  ButtonGroup,
+} from "react-bootstrap";
 import "../Styles/App.css";
 
 function filterStocks(data, symbol, industry) {
@@ -79,16 +87,39 @@ function Stocks() {
         <Container>
           <Row>
             <p className="title">Stocks</p>
+            <p className="context">
+              <Badge bg="dark">{rowData.length} </Badge>
+              &nbspStocks published
+            </p>
           </Row>
           <Row>
-            <Col xs md lg="auto">
+            {/* <Col xs md lg="me-auto">
               <SearchBar options={symbolList} onSubmit={setSearchSymbol} />
             </Col>
-            <Col xs md lg="auto">
+            <Col xs md lg={8}></Col>
+            <Col xs md lg="me-auto">
               <SelectBar options={uniqueOptions} onSubmit={setSearchIndustry} />
             </Col>
             <div className="h10"></div>
+          </Row> */}
+            <ButtonToolbar
+              className="justify-content-between"
+              aria-label="Toolbar with Button groups"
+            >
+              <InputGroup>
+                <InputGroup.Text id="btnGroupAddon">Stock:</InputGroup.Text>
+                <SearchBar options={symbolList} onSubmit={setSearchSymbol} />
+              </InputGroup>
+              <ButtonGroup aria-label="First group">
+                <InputGroup.Text id="btnGroupAddon">Industry:</InputGroup.Text>
+                <SelectBar
+                  options={uniqueOptions}
+                  onSubmit={setSearchIndustry}
+                />
+              </ButtonGroup>
+            </ButtonToolbar>
           </Row>
+          <div className="h10"></div>
           <Row>
             <Tables
               clickable={true}
