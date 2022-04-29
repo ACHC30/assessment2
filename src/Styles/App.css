@@ -31,3 +31,20 @@ h3 {
   font-size: 30px;
   text-shadow: #343a40 --2px;
 }
+.h50 {
+  height: 50px;
+}
+.h30 {
+  height: 30px;
+}
+.quotetable {
+  text-align: left;
+  color: black;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-shadow: #343a40 --2px;
+  height: 100;
+}
+.logo {
+  height: 32px;
+  width: 32px;
+}

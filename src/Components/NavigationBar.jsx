@@ -1,25 +1,28 @@
-import {
-BrowserRouter as Router,
-Routes,
-Route,
-} from "react-router-dom";
-import {
-Navbar,
-Container,
-Nav,
-} from "react-bootstrap";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Navbar, Container, Nav } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "../Styles/App.css";
 import Home from "../Pages/Home";
 import Stocks from "../Pages/Stocks";
 import PriceHistory from "../Pages/History";
 import GetFooter from "../Components/Footer";
-
-function NavigationBar(){
-    return (
+import logo from "../Images/logo.png";
+function NavigationBar() {
+  return (
     <Router>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#">Show Image Here</Navbar.Brand>
+          <Navbar.Brand>
+            <div className="logo">
+              <img
+                classname="logo"
+                src={logo}
+                height="36px"
+                width="36px"
+                alt="logo"
+              />
+            </div>
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
@@ -35,7 +38,7 @@ function NavigationBar(){
         <Route path="/stocks/:symbol" element={<PriceHistory />} />
       </Routes>
       <GetFooter />
-  </Router>
+    </Router>
   );
 }
 
