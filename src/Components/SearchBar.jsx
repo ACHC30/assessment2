@@ -1,34 +1,15 @@
 import { useState } from "react";
 import { Col, Row, Form, Button } from "react-bootstrap";
+import Select from 'react-select'
 function SearchBar(props) {
   const [innerSearch, setInnerSearch] = useState("");
+  const handleInputChange = characterEntered => {
+    setInnerSearch(characterEntered.value);
+    
+  };
   return (
     <div>
-      <Row>
-        <Col>
-          <Form>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Control
-                type="search"
-                placeholder="Stocks symbol"
-                value={innerSearch}
-                onChange={(e) => setInnerSearch(e.target.value)}
-              />
-              <Form.Text className="text-muted"></Form.Text>
-            </Form.Group>
-          </Form>
-        </Col>
-        <Col>
-          <Button
-            variant="dark"
-            type="submit"
-            id="search-button"
-            onClick={() => props.onSubmit(innerSearch)}
-          >
-            Submit
-          </Button>
-        </Col>
-      </Row>
+      <Select placeholder={"All Symbol"} options={props.options} onChange ={handleInputChange} onInputChange={props.onSubmit(innerSearch)}></Select>
     </div>
   );
 }

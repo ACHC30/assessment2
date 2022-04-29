@@ -58,7 +58,12 @@ function Stocks() {
       filter: true,
     },
   ];
-  
+
+  let symbolList = [{value: "", label: "All Symbol"}] 
+  rowData.map((stocks) => {
+    symbolList.push({value: stocks.symbol, label: stocks.symbol});
+  });
+
   if (loading || rowData === undefined) {
     return <h1>Loading...</h1>;
   }
@@ -71,12 +76,11 @@ function Stocks() {
           <Row>
             <p className="title">Stocks</p>
           </Row>
-          <Row>
-            <Col>
-              <SearchBar onSubmit={setSearchSymbol} />
+          <Row style={{marginBottom: "10px"}}>
+            <Col xs md lg="auto">
+              <SearchBar options={symbolList} onSubmit={setSearchSymbol} />
             </Col>
-
-            <Col xs md lg={{ span: 2, offset: 5 }}>
+            <Col xs md lg="auto">
               <SelectBar options={uniqueOptions} onSubmit={setSearchIndustry} />
             </Col>
           </Row>
