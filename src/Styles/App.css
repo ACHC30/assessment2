@@ -54,3 +54,7 @@ h3 {
 .date {
   padding: "10px";
 }
+.table {
+  height: 600px;
+  width: 100%;
+}
