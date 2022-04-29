@@ -55,6 +55,10 @@ h3 {
   padding: "10px";
 }
 .table {
+  height: auto;
+  width: auto;
+}
+.table_stock {
   height: 600px;
   width: 100%;
 }
