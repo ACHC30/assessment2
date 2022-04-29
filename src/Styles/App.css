@@ -54,7 +54,11 @@ h3 {
 .date {
   padding: "10px";
 }
-.table {
+.table_history {
+  height: 300px;
+  width: 100%;
+}
+.table_stock {
   height: 600px;
   width: 100%;
 }

@@ -7,7 +7,7 @@ import QuoteDisplay from "../Components/QuoteDisplay";
 import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
-function getQuoteInfo(data){
+function getQuoteInfo(data) {
   const dates = data.map((history) => history.date);
   const open = data.map((history) => history.open);
   const high = data.map((history) => history.high);
@@ -20,13 +20,13 @@ function getQuoteInfo(data){
     high,
     low,
     volumes,
-  }
+  };
 }
 
 function PriceHistory() {
   const [searchDate, setSearchDate] = useState("");
   const { loading, rowData, name, error } = SearchApiHistory(searchDate);
-  const { dates, open, high, low, volumes} = getQuoteInfo(rowData);
+  const { dates, open, high, low, volumes } = getQuoteInfo(rowData);
   const { loadingQ, rowDataQ, errorQ } = SearchApiQuote(name);
   const columns = [
     {
@@ -70,7 +70,6 @@ function PriceHistory() {
       filter: true,
     },
   ];
-  
 
   if (loading || loadingQ || rowData === undefined) {
     return <h1>Loading...</h1>;
@@ -88,11 +87,12 @@ function PriceHistory() {
             <MyDatePicker onSubmit={setSearchDate} />
           </Row>
           <Row>
-          <Col md lg={8}>
+            <Col md lg={8}>
               <Tables
-                clickable = {false}
+                clickable={false}
                 columns={columns}
                 rows={rowData}
+                style={"ag-theme-balham table_history"}
               />
             </Col>
             <Col>
@@ -100,7 +100,7 @@ function PriceHistory() {
                 <h3>Quote of {name}</h3>
               </Row>
               <Row>
-                <QuoteDisplay data={rowDataQ}/>
+                <QuoteDisplay data={rowDataQ} />
               </Row>
             </Col>
           </Row>
