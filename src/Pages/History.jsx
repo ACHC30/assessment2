@@ -92,7 +92,7 @@ function PriceHistory() {
                 clickable={false}
                 columns={columns}
                 rows={rowData}
-                style={"ag-theme-balham table_history"}
+                style={"table_history"}
               />
             </Col>
             <Col>
