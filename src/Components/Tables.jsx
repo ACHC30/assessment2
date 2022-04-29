@@ -6,7 +6,7 @@ import "ag-grid-community/dist/styles/ag-theme-balham.css";
 function Tables(props) {
   const navigate = useNavigate();
   return (
-    <div className={props.style}>
+    <div className={"ag-theme-balham " + props.style}>
       <AgGridReact
         columnDefs={props.columns}
         rowData={props.rows}

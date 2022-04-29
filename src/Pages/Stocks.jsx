@@ -94,7 +94,7 @@ function Stocks() {
               clickable={true}
               columns={columns}
               rows={stocksList}
-              style={"ag-theme-balham table_stock"}
+              style={"table_stock"}
             />
           </Row>
         </Container>
