@@ -6,7 +6,7 @@ import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import "../Styles/App.css";
 
-function filterStocks(data,symbol,industry){
+function filterStocks(data, symbol, industry) {
   const finalData = data.filter((profile) => {
     if (symbol === "" && industry === "") {
       return profile;
@@ -20,7 +20,7 @@ function filterStocks(data,symbol,industry){
   return finalData;
 }
 
-function getStocksIndustry(data){
+function getStocksIndustry(data) {
   let options = [];
   data.map((stock) => options.push(stock.industry));
   return [...new Set(options)].sort();
@@ -31,7 +31,7 @@ function Stocks() {
   const [searchIndustry, setSearchIndustry] = useState("");
   const { loading, rowData, error } = SearchApiStocks();
   let uniqueOptions = getStocksIndustry(rowData);
-  let stocksList = filterStocks(rowData,searchSymbol,searchIndustry); 
+  let stocksList = filterStocks(rowData, searchSymbol, searchIndustry);
   const columns = [
     {
       headername: "Symbol",
@@ -59,9 +59,9 @@ function Stocks() {
     },
   ];
 
-  let symbolList = [{value: "", label: "All Symbol"}] 
+  let symbolList = [{ value: "", label: "All Symbol" }];
   rowData.map((stocks) => {
-    symbolList.push({value: stocks.symbol, label: stocks.symbol});
+    symbolList.push({ value: stocks.symbol, label: stocks.symbol });
   });
 
   if (loading || rowData === undefined) {
@@ -76,17 +76,18 @@ function Stocks() {
           <Row>
             <p className="title">Stocks</p>
           </Row>
-          <Row style={{marginBottom: "10px"}}>
+          <Row>
             <Col xs md lg="auto">
               <SearchBar options={symbolList} onSubmit={setSearchSymbol} />
             </Col>
             <Col xs md lg="auto">
               <SelectBar options={uniqueOptions} onSubmit={setSearchIndustry} />
             </Col>
+            <div className="h10"></div>
           </Row>
           <Row>
             <Tables
-              clickable = {true}
+              clickable={true}
               columns={columns}
               rows={stocksList}
               height={"600px"}
