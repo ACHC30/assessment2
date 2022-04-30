@@ -11,8 +11,8 @@ function Home() {
       <CarouselBanner />
       <Container>
         <Row>
-          <p className="title">NAVIGATE</p>
-          <p className="title-small">Stock prices API Assessment 2 IFN666</p>
+          <h1 className="title">NAVIGATE</h1>
+          <h3 className="title-small">Stock prices API Assessment 2 IFN666</h3>
         </Row>
         <div className="h50"></div>
         <Row>

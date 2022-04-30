@@ -87,7 +87,7 @@ function Stocks() {
       <div>
         <Container>
           <Row>
-            <p className="title">Stocks</p>
+            <h1 className="title">Stocks</h1>
             <p className="context">
               <Badge className="left" bg="dark">
                 {rowData.length}{" "}
