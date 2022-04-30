@@ -49,6 +49,7 @@ function Stocks() {
   let uniqueOptions = getStocksIndustry(rowData);
   let stocksList = filterStocks(rowData, searchSymbol, searchIndustry);
   let symbolList = getStocksSymbol(rowData);
+  console.log("check" + symbolList);
   const columns = [
     {
       headername: "Symbol",
@@ -88,20 +89,13 @@ function Stocks() {
           <Row>
             <p className="title">Stocks</p>
             <p className="context">
-              <Badge bg="dark">{rowData.length} </Badge>
-              &nbspStocks published
+              <Badge className="left" bg="dark">
+                {rowData.length}{" "}
+              </Badge>
+              Stocks published
             </p>
           </Row>
           <Row>
-            {/* <Col xs md lg="me-auto">
-              <SearchBar options={symbolList} onSubmit={setSearchSymbol} />
-            </Col>
-            <Col xs md lg={8}></Col>
-            <Col xs md lg="me-auto">
-              <SelectBar options={uniqueOptions} onSubmit={setSearchIndustry} />
-            </Col>
-            <div className="h10"></div>
-          </Row> */}
             <ButtonToolbar
               className="justify-content-between"
               aria-label="Toolbar with Button groups"
