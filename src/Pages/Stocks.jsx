@@ -6,7 +6,6 @@ import { useState } from "react";
 import {
   Container,
   Row,
-  Col,
   Badge,
   ButtonToolbar,
   InputGroup,
@@ -90,11 +89,12 @@ function Stocks() {
             <h1 className="title">Stocks</h1>
             <p className="context">
               <Badge className="left" bg="dark">
-                {rowData.length}{" "}
+                {rowData.length}
               </Badge>
               Stocks published
             </p>
           </Row>
+
           <Row>
             <ButtonToolbar
               className="justify-content-between"
@@ -113,7 +113,13 @@ function Stocks() {
               </ButtonGroup>
             </ButtonToolbar>
           </Row>
-          <div className="h10"></div>
+          <Row>
+            <div className="h10 ">
+              Please click on the symbol or name of stocks for a detailed quote
+              and historical price
+            </div>
+          </Row>
+
           <Row>
             <Tables
               clickable={true}
