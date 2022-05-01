@@ -30,7 +30,7 @@ function NavigationBar() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/stocks" element={<Stocks />} />
-        <Route path="/stocks/:symbol" element={<PriceHistory />} />
+        <Route path="/history/:symbol" element={<PriceHistory />} />
       </Routes>
       <GetFooter />
     </Router>

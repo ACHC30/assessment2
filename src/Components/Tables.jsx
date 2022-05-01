@@ -15,7 +15,7 @@ function Tables(props) {
         rowSelection="Single"
         onRowClicked={(e) =>
           props.clickable
-            ? navigate(`/stocks/${props.rows[e.rowIndex].symbol}`, {
+            ? navigate(`/history/${props.rows[e.rowIndex].symbol}`, {
                 state: { name: props.rows[e.rowIndex].symbol },
               })
             : ""
