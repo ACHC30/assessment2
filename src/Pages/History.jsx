@@ -85,8 +85,17 @@ function PriceHistory() {
           </Row>
           <Row>
             <MyDatePicker onSubmit={setSearchDate} />
+            <div className="h10"></div>
           </Row>
           <Row>
+          <Col md lg={8}>
+              <Tables
+                clickable={false}
+                columns={columns}
+                rows={rowData}
+                style={"table_history"}
+              />
+            </Col>
             <Col>
               <Row>
                 <h3>Quote of {name}</h3>
@@ -94,14 +103,6 @@ function PriceHistory() {
               <Row>
                 <QuoteDisplay data={rowDataQ} />
               </Row>
-            </Col>
-            <Col md lg={8}>
-              <Tables
-                clickable={false}
-                columns={columns}
-                rows={rowData}
-                style={"table_history"}
-              />
             </Col>
           </Row>
           <Row>

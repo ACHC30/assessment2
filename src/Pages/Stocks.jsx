@@ -119,7 +119,6 @@ function Stocks() {
               and historical price
             </div>
           </Row>
-
           <Row>
             <Tables
               clickable={true}
