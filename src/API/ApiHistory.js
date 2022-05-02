@@ -12,7 +12,11 @@ function SearchApiHistory(search) {
   useEffect(() => {
     (async () => {
       try {
-        setData(await getDataHistory(name, search));
+        if (search > new Date()) {
+          setData([]);
+        } else {
+          setData(await getDataHistory(name, search));
+        }
         setLoading(false);
       } catch (err) {
         setError(err);

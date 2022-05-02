@@ -42,7 +42,7 @@ function PriceHistory() {
       headername: "Date",
       field: "date",
       resizable: true,
-      flex: 1,
+      flex: 2,
       sortable: true,
       filter: true,
     },
