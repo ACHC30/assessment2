@@ -51,7 +51,7 @@ async function getDataHistory(symbol, dateSearch) {
       low: history.low,
       high: history.high,
       close: history.close,
-      label: history.label,
+
       volume: history.volume,
     };
   });

@@ -92,6 +92,14 @@ function PriceHistory() {
       filter: true,
     },
     {
+      headername: "Close",
+      field: "close",
+      resizable: true,
+      flex: 2,
+      sortable: true,
+      filter: true,
+    },
+    {
       headername: "Volume",
       field: "volume",
       resizable: true,
