@@ -127,7 +127,7 @@ function PriceHistory() {
             </Col>
             <Col md lg={8}>
               <Charts
-                date={dates}
+                date={dates.reverse()}
                 open={open}
                 low={low}
                 high={high}
