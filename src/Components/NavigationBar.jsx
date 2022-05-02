@@ -1,5 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Navbar, Container, Nav } from "react-bootstrap";
+import {
+  Navbar,
+  Container,
+  Nav,
+  Form,
+  FormControl,
+  Button,
+} from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../Styles/App.css";
 import Home from "../Pages/Home";
@@ -7,6 +14,7 @@ import Stocks from "../Pages/Stocks";
 import PriceHistory from "../Pages/History";
 import GetFooter from "../Components/Footer";
 import logo from "../Images/logo.png";
+import SearchHistory from "./SearchHistory";
 function NavigationBar() {
   return (
     <Router>
@@ -24,6 +32,7 @@ function NavigationBar() {
             <Nav>
               <Nav.Link>Have a nice day!</Nav.Link>
             </Nav>
+            <SearchHistory />
           </Navbar.Collapse>
         </Container>
       </Navbar>

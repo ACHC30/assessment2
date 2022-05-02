@@ -113,3 +113,7 @@ h3 {
 .carousel-inner {
   max-height: 70vh !important;
 }
+.size {
+  max-height: 50vh;
+  color: rgb(179, 255, 0);
+}

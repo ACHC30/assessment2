@@ -6,12 +6,29 @@ import MyDatePicker from "../Components/MyDatePicker";
 import QuoteDisplay from "../Components/QuoteDisplay";
 import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import { useLocation } from "react-router-dom";
+// function getQuoteInfo(data) {
+//   const dates = data.map((history) => history.date);
+//   const open = data.map((history) => history.open);
+//   const high = data.map((history) => history.high);
+//   const low = data.map((history) => history.low);
 
-function getQuoteInfo(data) {
+//   const volumes = data.map((history) => history.volume);
+
+//   return {
+//     dates,
+//     open,
+//     high,
+//     low,
+//     volumes,
+//   };
+// }
+function getHistoryInfo(data) {
   const dates = data.map((history) => history.date);
   const open = data.map((history) => history.open);
   const high = data.map((history) => history.high);
   const low = data.map((history) => history.low);
+  const close = data.map((history) => history.open);
   const volumes = data.map((history) => history.volume);
 
   return {
@@ -19,15 +36,28 @@ function getQuoteInfo(data) {
     open,
     high,
     low,
+    close,
     volumes,
   };
 }
 
 function PriceHistory() {
   const [searchDate, setSearchDate] = useState("");
-  const { loading, rowData, name, error } = SearchApiHistory(searchDate);
-  const { dates, open, high, low, volumes } = getQuoteInfo(rowData);
-  const { loadingQ, rowDataQ, errorQ } = SearchApiQuote(name);
+  const location = useLocation();
+  const symbol = location.state.name;
+
+  console.log("120" + symbol);
+  const { loading, rowData, name, error } = SearchApiHistory(
+    symbol,
+    searchDate
+  );
+  const { loadingQ, rowDataQ, errorQ } = SearchApiQuote(symbol);
+  // const { dates, open, high, low, volumes } = getQuoteInfo(rowDataQ);
+  const { dates, open, high, low, close, volumes } = getHistoryInfo(rowData);
+  // console.log("130" + rowData[1].date);
+  // console.log("140" + dates);
+
+  // const newDate = datesH.reverse();
   const columns = [
     {
       headername: "Date",
@@ -81,7 +111,7 @@ function PriceHistory() {
       <div>
         <Container>
           <Row>
-            <p className="title">History of {name}</p>
+            <p className="title">History of {symbol}</p>
           </Row>
           <Row>
             <MyDatePicker onSubmit={setSearchDate} />
@@ -89,56 +119,30 @@ function PriceHistory() {
           <Row>
             <Col>
               <Row>
-                <h3>Quote of {name}</h3>
+                <h3>Quote of {symbol}</h3>
               </Row>
               <Row>
                 <QuoteDisplay data={rowDataQ} />
               </Row>
             </Col>
             <Col md lg={8}>
-              <Tables
-                clickable={false}
-                columns={columns}
-                rows={rowData}
-                style={"table_history"}
+              <Charts
+                date={dates}
+                open={open}
+                low={low}
+                high={high}
+                close={close}
+                volumes={volumes}
               />
             </Col>
           </Row>
           <Row>
-            <Col xs={12} md ld={6}>
-              <Charts
-                date={dates}
-                data={open}
-                title={"open"}
-                color={"#227ab4fa"}
-              />
-            </Col>
-            <Col xs={12} md ld={6}>
-              <Charts
-                date={dates}
-                data={high}
-                title={"high"}
-                color={"#3db870fa"}
-              />
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={12} md ld={6}>
-              <Charts
-                date={dates}
-                data={low}
-                title={"low"}
-                color={"#bd3b3bfa"}
-              />
-            </Col>
-            <Col xs={12} md ld={6}>
-              <Charts
-                date={dates}
-                data={volumes}
-                title={"volume"}
-                color={"#000000e0"}
-              />
-            </Col>
+            <Tables
+              clickable={false}
+              columns={columns}
+              rows={rowData}
+              style={"table_history"}
+            />
           </Row>
         </Container>
       </div>
