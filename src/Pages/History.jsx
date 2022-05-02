@@ -7,18 +7,27 @@ import QuoteDisplay from "../Components/QuoteDisplay";
 import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
-function getQuoteInfo(data) {
+function getHistoryInfo(data) {
   const dates = data.map((history) => history.date);
   const open = data.map((history) => history.open);
   const high = data.map((history) => history.high);
   const low = data.map((history) => history.low);
+  const close =data.map((history) => history.close);
   const volumes = data.map((history) => history.volume);
+  
+  dates.reverse();
+  open.reverse();
+  high.reverse();
+  low.reverse();
+  close.reverse();
+  volumes.reverse();
 
   return {
     dates,
     open,
     high,
     low,
+    close,
     volumes,
   };
 }
@@ -26,7 +35,7 @@ function getQuoteInfo(data) {
 function PriceHistory() {
   const [searchDate, setSearchDate] = useState("");
   const { loading, rowData, name, error } = SearchApiHistory(searchDate);
-  const { dates, open, high, low, volumes } = getQuoteInfo(rowData);
+  const { dates, open, high, low, close, volumes } = getHistoryInfo(rowData);
   const { loadingQ, rowDataQ, errorQ } = SearchApiQuote(name);
   const columns = [
     {
@@ -56,6 +65,14 @@ function PriceHistory() {
     {
       headername: "Low",
       field: "low",
+      resizable: true,
+      flex: 2,
+      sortable: true,
+      filter: true,
+    },
+    {
+      headername: "Close",
+      field: "close",
       resizable: true,
       flex: 2,
       sortable: true,
@@ -106,7 +123,7 @@ function PriceHistory() {
             </Col>
           </Row>
           <Row>
-            <Col xs={12} md ld={6}>
+            <Col xs={12} md lg={4}>
               <Charts
                 date={dates}
                 data={open}
@@ -114,7 +131,7 @@ function PriceHistory() {
                 color={"#227ab4fa"}
               />
             </Col>
-            <Col xs={12} md ld={6}>
+            <Col xs={12} md lg={4}>
               <Charts
                 date={dates}
                 data={high}
@@ -122,9 +139,7 @@ function PriceHistory() {
                 color={"#3db870fa"}
               />
             </Col>
-          </Row>
-          <Row>
-            <Col xs={12} md ld={6}>
+            <Col xs={12} md lg={4}>
               <Charts
                 date={dates}
                 data={low}
@@ -132,7 +147,17 @@ function PriceHistory() {
                 color={"#bd3b3bfa"}
               />
             </Col>
-            <Col xs={12} md ld={6}>
+          </Row>
+          <Row>
+          <Col xs={12} md lg={6}>
+              <Charts
+                date={dates}
+                data={close}
+                title={"close"}
+                color={"#FFFF00"}
+              />
+            </Col>
+            <Col xs={12} md lg={6}>
               <Charts
                 date={dates}
                 data={volumes}

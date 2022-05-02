@@ -51,6 +51,7 @@ async function getDataHistory(symbol, dateSearch) {
       open: history.open,
       low: history.low,
       high: history.high,
+      close: history.close,
       volume: history.volume,
     };
   });
