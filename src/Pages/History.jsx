@@ -46,10 +46,7 @@ function PriceHistory() {
   const location = useLocation();
   const symbol = location.state.name;
 
-  const { loading, rowData, name, error } = SearchApiHistory(
-    symbol,
-    searchDate
-  );
+  const { loading, rowData, error } = SearchApiHistory(symbol, searchDate);
   const { loadingQ, rowDataQ, errorQ } = SearchApiQuote(symbol);
 
   const { dates, open, high, low, close, volumes } = getHistoryInfo(rowData);
