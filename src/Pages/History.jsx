@@ -56,7 +56,7 @@ function PriceHistory() {
   const { dates, open, high, low, close, volumes } = getHistoryInfo(rowData);
   // console.log("130" + rowData[1].date);
   // console.log("140" + dates);
-
+  console.log(rowData);
   // const newDate = datesH.reverse();
   const columns = [
     {
