@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function SelectBar(props) {
   const [innerSearch, setInnerSearch] = useState("");
   return (
+    <div>
     <DropdownButton
       id="dropdown-variants-dark"
       variant="dark"
@@ -23,6 +24,7 @@ function SelectBar(props) {
       {props.options.map((title) => (
         <Dropdown.Item
           eventKey={title}
+          key={title}
           onClick={(event) => {
             setInnerSearch(event.target.textContent);
             props.onSubmit(event.target.textContent);
@@ -32,6 +34,7 @@ function SelectBar(props) {
         </Dropdown.Item>
       ))}
     </DropdownButton>
+    </div>
   );
 }
 

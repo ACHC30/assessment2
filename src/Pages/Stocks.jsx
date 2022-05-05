@@ -14,17 +14,17 @@ import {
 import "../Styles/App.css";
 
 function filterStocks(data, symbol, industry) {
-  const finalData = data.filter((profile) => {
-    if (symbol === "" && industry === "") {
-      return profile;
-    } else if (
-      profile.symbol.toLowerCase().includes(symbol.toLowerCase()) &&
-      profile.industry.toLowerCase().includes(industry.toLowerCase())
-    ) {
-      return profile;
-    }
-  });
+  let finalData = [];
+  if (symbol === "" && industry === "") {
+    return finalData = data;
+  }
+  else{
+      finalData = data.filter((profile) => {
+      return  profile.symbol.toLowerCase().includes(symbol.toLowerCase()) &&
+        profile.industry.toLowerCase().includes(industry.toLowerCase());
+  })
   return finalData;
+ }
 }
 
 function getStocksIndustry(data) {
@@ -36,7 +36,7 @@ function getStocksIndustry(data) {
 function getStocksSymbol(data) {
   let options = [{ value: "", label: "All Symbol" }];
   data.map((stocks) => {
-    options.push({ value: stocks.symbol, label: stocks.symbol });
+    return options.push({ value: stocks.symbol, label: stocks.symbol }); 
   });
   return options;
 }
@@ -48,10 +48,9 @@ function Stocks() {
   let uniqueOptions = getStocksIndustry(rowData);
   let stocksList = filterStocks(rowData, searchSymbol, searchIndustry);
   let symbolList = getStocksSymbol(rowData);
-  console.log("check" + symbolList);
   const columns = [
     {
-      headername: "Symbol",
+      headerName: "Symbol",
       field: "symbol",
       resizable: true,
       flex: 1,
@@ -59,7 +58,7 @@ function Stocks() {
       filter: true,
     },
     {
-      headername: "Name",
+      headerName: "Name",
       field: "name",
       resizable: true,
       flex: 2,
@@ -67,7 +66,7 @@ function Stocks() {
       filter: true,
     },
     {
-      headername: "Industry",
+      headerName: "Industry",
       field: "industry",
       resizable: true,
       flex: 2,
@@ -94,7 +93,6 @@ function Stocks() {
               Stocks published
             </p>
           </Row>
-
           <Row>
             <ButtonToolbar
               className="justify-content-between"
@@ -124,7 +122,7 @@ function Stocks() {
               clickable={true}
               columns={columns}
               rows={stocksList}
-              style={"table_stock"}
+              myStyle={"table_stock"}
             />
           </Row>
         </Container>

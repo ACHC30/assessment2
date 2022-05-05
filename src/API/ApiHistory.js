@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-const API_KEY = "0dd0c19136f01040874e4d1027257bfd";
+const API_KEY = "eb6d9149d9e4183108ab835be6a1bfac";
 
-function SearchApiHistory(search) {
+function SearchApiHistory() {
   const [loading, setLoading] = useState(true);
   const [rowData, setData] = useState([]);
   const [error, setError] = useState(null);
@@ -12,14 +12,14 @@ function SearchApiHistory(search) {
   useEffect(() => {
     (async () => {
       try {
-        setData(await getDataHistory(name, search));
+        setData(await getDataHistory(name));
         setLoading(false);
       } catch (err) {
         setError(err);
         setLoading(false);
       }
     })();
-  }, [search]);
+  }, [name]);
   return {
     loading,
     rowData,
@@ -28,33 +28,22 @@ function SearchApiHistory(search) {
   };
 }
 
-async function getDataHistory(symbol, dateSearch) {
-  let url = "";
-  if (
-    dateSearch === "" ||
-    dateSearch.toISOString().slice(0, 10) ===
-      new Date().toISOString().slice(0, 10)
-  ) {
-    url = `https://financialmodelingprep.com/api/v3/historical-price-full/${symbol}?timeseries=100&apikey=${API_KEY}`;
-  } else {
-    url = `https://financialmodelingprep.com/api/v3/historical-price-full/${symbol}?from=${dateSearch
-      .toISOString()
-      .slice(0, 10)}&to=${new Date()
-      .toISOString()
-      .slice(0, 10)}&apikey=${API_KEY}`;
-  }
+async function getDataHistory(symbol) {
+  let url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=${API_KEY}`;
   let res = await fetch(url);
   let data = await res.json();
-  let history = data.historical.map((history) => {
+  let dataObj = Object.entries(data)[1][1];
+  let history = Object.entries(dataObj);
+  return history.map((history) => {
     return {
-      date: history.date,
-      open: history.open,
-      low: history.low,
-      high: history.high,
-      volume: history.volume,
+      date: history[0],
+      open: history[1]["1. open"],
+      low: history[1]["2. high"],
+      high: history[1]["3. low"],
+      close: history[1]["4. close"],
+      volume: history[1]["5. volume"],
     };
   });
-  return history;
 }
 
 export default SearchApiHistory;

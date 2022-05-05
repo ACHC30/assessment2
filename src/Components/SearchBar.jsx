@@ -3,8 +3,14 @@ import Select from "react-select";
 
 function SearchBar(props) {
   const [innerSearch, setInnerSearch] = useState("");
+  const customStyles = {
+    container: () => ({
+      width: 165,
+    })
+  }
   return (
     <Select
+      styles={customStyles}
       placeholder={"Symbol Search"}
       options={props.options}
       theme={(theme) => ({
