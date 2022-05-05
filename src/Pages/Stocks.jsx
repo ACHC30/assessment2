@@ -48,7 +48,6 @@ function Stocks() {
   let uniqueOptions = getStocksIndustry(rowData);
   let stocksList = filterStocks(rowData, searchSymbol, searchIndustry);
   let symbolList = getStocksSymbol(rowData);
-  console.log("check" + symbolList);
   const columns = [
     {
       headername: "Symbol",
@@ -102,7 +101,7 @@ function Stocks() {
             >
               <InputGroup>
                 <InputGroup.Text id="btnGroupAddon">Stock:</InputGroup.Text>
-                <SearchBar options={symbolList} onSubmit={setSearchSymbol} />
+                <SearchBar style={{width: "10em"}} options={symbolList} onSubmit={setSearchSymbol} />
               </InputGroup>
               <ButtonGroup aria-label="First group">
                 <InputGroup.Text id="btnGroupAddon">Industry:</InputGroup.Text>

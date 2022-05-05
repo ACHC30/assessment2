@@ -102,7 +102,9 @@ function PriceHistory() {
           </Row>
           <Row>
             <MyDatePicker onSubmit={setSearchDate} />
-            <div className="h10"></div>
+            <div className="h10">
+              Selecet the date you want to search from. if you pick today it will show teh history for the past 100 days
+            </div>
           </Row>
           <Row>
           <Col md lg={8}>
